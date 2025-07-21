@@ -26,13 +26,14 @@ st.title("AI Dictation Practice from Book Images")
 
 uploaded_file = st.file_uploader("Upload an image of a book page", type=["jpg", "jpeg", "png"])
 
-    # Ask user for test duration
-    duration = st.selectbox("Select dictation duration:", ["1 min", "2 min", "3 min"])
-    duration_map = {"1 min": 1, "2 min": 2, "3 min": 3}
-    minutes = duration_map[duration]
-    # Estimate words per minute (WPM) for dictation: 100 WPM (slow, for students)
-    target_words = minutes * 100
+# Ask user for test duration
+duration = st.selectbox("Select dictation duration:", ["1 min", "2 min", "3 min"])
+duration_map = {"1 min": 1, "2 min": 2, "3 min": 3}
+minutes = duration_map[duration]
+# Estimate words per minute (WPM) for dictation: 100 WPM (slow, for students)
+target_words = minutes * 100
 
+if uploaded_file:
     image = Image.open(uploaded_file)
     st.image(image, caption="Uploaded Image", use_column_width=True)
     # OCR using Gemini
